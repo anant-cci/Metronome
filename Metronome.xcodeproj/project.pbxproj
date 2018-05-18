@@ -17,6 +17,7 @@
 		16BF2ABC20AE8E7B0022D0E3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16BF2ABB20AE8E7B0022D0E3 /* AVFoundation.framework */; };
 		16BF2ABF20AEAD4E0022D0E3 /* High.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16BF2ABD20AEAD4E0022D0E3 /* High.wav */; };
 		16BF2AC020AEAD4E0022D0E3 /* Low.wav in Resources */ = {isa = PBXBuildFile; fileRef = 16BF2ABE20AEAD4E0022D0E3 /* Low.wav */; };
+		16BF2AC320AEDFB10022D0E3 /* MetronomeNew.m in Sources */ = {isa = PBXBuildFile; fileRef = 16BF2AC120AEDFB10022D0E3 /* MetronomeNew.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		16BF2ABB20AE8E7B0022D0E3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		16BF2ABD20AEAD4E0022D0E3 /* High.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = High.wav; sourceTree = "<group>"; };
 		16BF2ABE20AEAD4E0022D0E3 /* Low.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Low.wav; sourceTree = "<group>"; };
+		16BF2AC120AEDFB10022D0E3 /* MetronomeNew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MetronomeNew.m; sourceTree = "<group>"; };
+		16BF2AC220AEDFB10022D0E3 /* MetronomeNew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MetronomeNew.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +78,8 @@
 				16BF2AA320AE8CFB0022D0E3 /* ViewController.m */,
 				16BF2AB720AE8E4A0022D0E3 /* Metronome.h */,
 				16BF2AB820AE8E4A0022D0E3 /* Metronome.m */,
+				16BF2AC220AEDFB10022D0E3 /* MetronomeNew.h */,
+				16BF2AC120AEDFB10022D0E3 /* MetronomeNew.m */,
 				16BF2AA520AE8CFB0022D0E3 /* Main.storyboard */,
 				16BF2ABD20AEAD4E0022D0E3 /* High.wav */,
 				16BF2ABE20AEAD4E0022D0E3 /* Low.wav */,
@@ -168,6 +173,7 @@
 			files = (
 				16BF2AB920AE8E4A0022D0E3 /* Metronome.m in Sources */,
 				16BF2AA420AE8CFB0022D0E3 /* ViewController.m in Sources */,
+				16BF2AC320AEDFB10022D0E3 /* MetronomeNew.m in Sources */,
 				16BF2AAF20AE8CFC0022D0E3 /* main.m in Sources */,
 				16BF2AA120AE8CFB0022D0E3 /* AppDelegate.m in Sources */,
 			);

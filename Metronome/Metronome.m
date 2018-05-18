@@ -47,8 +47,8 @@
     [audioFileAccentedClick readIntoBuffer:bufferAccentedClick error:nil];
     bufferAccentedClick.frameLength = beatLength;
     
-    AVAudioPCMBuffer *bufferBar = [[AVAudioPCMBuffer alloc] initWithPCMFormat:audioFileMainClick.processingFormat frameCapacity:4 * beatLength];
-    bufferBar.frameLength = 4 * beatLength;
+    AVAudioPCMBuffer *bufferBar = [[AVAudioPCMBuffer alloc] initWithPCMFormat:audioFileMainClick.processingFormat frameCapacity:beatLength];
+    bufferBar.frameLength = beatLength;
     
     // don't forget if we have two or more channels then we have to multiply memory pointee at channels count
     NSMutableArray *accentedClickArray = [NSMutableArray new];
@@ -62,9 +62,9 @@
     }
     
     NSMutableArray *barArray = [NSMutableArray new];
-    [barArray addObjectsFromArray:accentedClickArray];
-    [barArray addObjectsFromArray:mainClickArray];
-    [barArray addObjectsFromArray:mainClickArray];
+//    [barArray addObjectsFromArray:accentedClickArray];
+//    [barArray addObjectsFromArray:mainClickArray];
+//    [barArray addObjectsFromArray:mainClickArray];
     [barArray addObjectsFromArray:mainClickArray];
     
     for (AVAudioFrameCount i = 0; i < audioFileMainClick.processingFormat.channelCount * bufferBar.frameLength; i++) {
@@ -77,11 +77,15 @@
 - (void)play:(double)bpm {
     AVAudioPCMBuffer *buffer = [self generateBuffer:bpm];
     if (audioPlayerNode.isPlaying) {
-        [audioPlayerNode scheduleBuffer:buffer atTime:nil options:AVAudioPlayerNodeBufferInterruptsAtLoop completionHandler:nil];
+        [audioPlayerNode scheduleBuffer:buffer atTime:nil options:AVAudioPlayerNodeBufferInterruptsAtLoop completionHandler:^{
+            NSLog(@"Interrupted");
+        }];
     } else {
         [audioPlayerNode play];
     }
-    [audioPlayerNode scheduleBuffer:buffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:nil];
+    [audioPlayerNode scheduleBuffer:buffer atTime:nil options:AVAudioPlayerNodeBufferLoops completionHandler:^{
+        NSLog(@"Complete");
+    }];
 }
 
 - (void)stop {

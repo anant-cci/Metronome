@@ -7,9 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "Metronome.h"
+#import "MetronomeNew.h"
 
-@interface ViewController ()
+@interface ViewController () <MetronomeDelegate>
 
 @property (weak, nonatomic) IBOutlet UIStepper *stepper;
 @property (weak, nonatomic) IBOutlet UILabel *tempoLabel;
@@ -18,16 +18,19 @@
 
 @implementation ViewController {
     double tempo;
-    Metronome *metronome;
+    MetronomeNew *metronome;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    
+    
     NSURL *highUrl = [[NSBundle mainBundle] URLForResource:@"High" withExtension:@"wav"];
     NSURL *lowUrl = [[NSBundle mainBundle] URLForResource:@"Low" withExtension:@"wav"];
-    metronome = [[Metronome alloc] init:highUrl accentedClickFile:lowUrl];
+    metronome = [[MetronomeNew alloc] init:highUrl];
+    metronome.delegate = self;
     
     tempo = 120;
     self.stepper.stepValue = 1;
@@ -45,7 +48,8 @@
 }
 
 - (IBAction)startPlayback:(UIButton *)sender {
-    [metronome play:tempo];
+    [metronome setTempo:tempo];
+    [metronome start];
 }
 
 - (IBAction)stopPlayback:(UIButton *)sender {
@@ -54,8 +58,14 @@
 
 - (IBAction)stepperValueChanged:(UIStepper *)sender {
     tempo = self.stepper.value;
-    [metronome play:tempo];
+    [metronome setTempo:tempo];
+    [metronome start];
     self.tempoLabel.text = [NSString stringWithFormat:@"%d", (int)tempo];
+}
+
+#pragma MetronomeDelegate methods
+- (void)metronomeTicking:(MetronomeNew *)metronome bar:(SInt32)bar beat:(SInt32)beat {
+    NSLog(@"%d   %d", bar, beat);
 }
 
 @end
