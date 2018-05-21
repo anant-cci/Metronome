@@ -63,7 +63,6 @@
 - (IBAction)stepperValueChanged:(UIStepper *)sender {
     tempo = self.stepper.value;
     [metronome setTempo:tempo];
-    [metronome start];
     self.tempoLabel.text = [NSString stringWithFormat:@"%d", (int)tempo];
 }
 
