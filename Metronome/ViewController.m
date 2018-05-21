@@ -13,6 +13,10 @@
 
 @property (weak, nonatomic) IBOutlet UIStepper *stepper;
 @property (weak, nonatomic) IBOutlet UILabel *tempoLabel;
+@property (weak, nonatomic) IBOutlet UIButton *button1;
+@property (weak, nonatomic) IBOutlet UIButton *button2;
+@property (weak, nonatomic) IBOutlet UIButton *button3;
+@property (weak, nonatomic) IBOutlet UIButton *button4;
 
 @end
 
@@ -66,6 +70,26 @@
 #pragma MetronomeDelegate methods
 - (void)metronomeTicking:(MetronomeNew *)metronome bar:(SInt32)bar beat:(SInt32)beat {
     NSLog(@"%d   %d", bar, beat);
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self animateView:beat];
+    });
+}
+
+- (void)animateView:(int)beat {
+    UIButton *button;
+    if (beat == 1) {
+        button = self.button1;
+    } else if (beat == 2) {
+        button = self.button2;
+    } else if (beat == 3) {
+        button = self.button3;
+    } else {
+        button = self.button4;
+    }
+    button.backgroundColor = [UIColor greenColor];
+    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^{
+        button.backgroundColor = [UIColor lightGrayColor];
+    } completion:nil];
 }
 
 @end

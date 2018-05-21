@@ -21,6 +21,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E0p-Zz-XrG">
+                                <rect key="frame" x="82" y="113" width="210" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hY0-9v-Cyl">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="FI3-AB-QES"/>
+                                            <constraint firstAttribute="width" constant="45" id="RmN-ed-enl"/>
+                                        </constraints>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4h-3e-LQg">
+                                        <rect key="frame" x="55" y="0.0" width="45" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dSP-Mu-r31">
+                                        <rect key="frame" x="110" y="0.0" width="45" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcS-CH-AyH">
+                                        <rect key="frame" x="165" y="0.0" width="45" height="30"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bcS-CH-AyH" secondAttribute="trailing" id="3Lc-Nq-nlT"/>
+                                    <constraint firstItem="dSP-Mu-r31" firstAttribute="width" secondItem="hY0-9v-Cyl" secondAttribute="width" id="7Eu-ke-4pG"/>
+                                    <constraint firstItem="dSP-Mu-r31" firstAttribute="centerY" secondItem="E0p-Zz-XrG" secondAttribute="centerY" id="BT1-y0-Xqz"/>
+                                    <constraint firstItem="dSP-Mu-r31" firstAttribute="height" secondItem="hY0-9v-Cyl" secondAttribute="height" id="Iq3-j9-0VM"/>
+                                    <constraint firstItem="f4h-3e-LQg" firstAttribute="leading" secondItem="hY0-9v-Cyl" secondAttribute="trailing" constant="10" id="TUG-xe-fWp"/>
+                                    <constraint firstItem="bcS-CH-AyH" firstAttribute="centerY" secondItem="E0p-Zz-XrG" secondAttribute="centerY" id="WBt-WW-nAV"/>
+                                    <constraint firstItem="dSP-Mu-r31" firstAttribute="leading" secondItem="f4h-3e-LQg" secondAttribute="trailing" constant="10" id="Yfh-Jb-oQE"/>
+                                    <constraint firstAttribute="bottom" secondItem="hY0-9v-Cyl" secondAttribute="bottom" id="bXr-bE-2RY"/>
+                                    <constraint firstItem="bcS-CH-AyH" firstAttribute="width" secondItem="hY0-9v-Cyl" secondAttribute="width" id="dEH-Hk-6FD"/>
+                                    <constraint firstItem="hY0-9v-Cyl" firstAttribute="leading" secondItem="E0p-Zz-XrG" secondAttribute="leading" id="dSR-XY-2gZ"/>
+                                    <constraint firstItem="f4h-3e-LQg" firstAttribute="width" secondItem="hY0-9v-Cyl" secondAttribute="width" id="fGD-z1-gaT"/>
+                                    <constraint firstItem="f4h-3e-LQg" firstAttribute="centerY" secondItem="E0p-Zz-XrG" secondAttribute="centerY" id="gBq-Cd-WUg"/>
+                                    <constraint firstItem="bcS-CH-AyH" firstAttribute="leading" secondItem="dSP-Mu-r31" secondAttribute="trailing" constant="10" id="kZS-7s-ABA"/>
+                                    <constraint firstItem="hY0-9v-Cyl" firstAttribute="top" secondItem="E0p-Zz-XrG" secondAttribute="top" id="mrd-Ab-kgB"/>
+                                    <constraint firstItem="bcS-CH-AyH" firstAttribute="height" secondItem="hY0-9v-Cyl" secondAttribute="height" id="ngt-J6-GxZ"/>
+                                    <constraint firstItem="f4h-3e-LQg" firstAttribute="height" secondItem="hY0-9v-Cyl" secondAttribute="height" id="nk4-Bd-0Hn"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pi2-8z-yUj">
                                 <rect key="frame" x="120" y="243" width="134" height="179.5"/>
                                 <subviews>
@@ -71,14 +115,25 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="pi2-8z-yUj" firstAttribute="centerY" secondItem="0Gs-0d-09F" secondAttribute="centerY" id="Gyo-gy-760"/>
+                            <constraint firstItem="pi2-8z-yUj" firstAttribute="top" secondItem="E0p-Zz-XrG" secondAttribute="bottom" constant="100" id="KyP-Ai-lNc"/>
                             <constraint firstItem="pi2-8z-yUj" firstAttribute="centerX" secondItem="0Gs-0d-09F" secondAttribute="centerX" id="hef-rW-kUs"/>
+                            <constraint firstItem="E0p-Zz-XrG" firstAttribute="centerX" secondItem="0Gs-0d-09F" secondAttribute="centerX" id="rOO-sw-oeB"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="button1" destination="hY0-9v-Cyl" id="EDc-tc-n8J"/>
+                        <outlet property="button2" destination="f4h-3e-LQg" id="AkW-i9-ZfZ"/>
+                        <outlet property="button3" destination="dSP-Mu-r31" id="EhB-1D-VN9"/>
+                        <outlet property="button4" destination="bcS-CH-AyH" id="kID-90-yhv"/>
                         <outlet property="stepper" destination="IFf-rv-K9X" id="tlL-JM-KUQ"/>
                         <outlet property="tempoLabel" destination="XJk-MH-8zm" id="M0p-g3-9tA"/>
                     </connections>
                 </viewController>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LSH-di-iBq">
+                    <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </button>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
