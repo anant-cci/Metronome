@@ -136,9 +136,9 @@ static const float kTempoChangeResponsivenessSeconds = 0.250f;
 			// This time is relative to the player's start time.
 
         [_player scheduleBuffer:_soundBuffer[_bufferNumber] atTime:playerBeatTime options:0 completionHandler:^{
-            dispatch_sync(_syncQueue, ^{
-				_beatsScheduled -= 1;
-                _bufferNumber ^= 1;
+            dispatch_sync(self->_syncQueue, ^{
+                self->_beatsScheduled -= 1;
+                self->_bufferNumber ^= 1;
 				[self scheduleBeats];
 			});
 		}];
@@ -164,8 +164,8 @@ static const float kTempoChangeResponsivenessSeconds = 0.250f;
 			uint64_t latencyHostTicks = [AVAudioTime hostTimeForSeconds: output.presentationLatency];
 			dispatch_after(dispatch_time(nodeBeatTime.hostTime + latencyHostTicks, 0), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 				// hardcoded to 4/4 meter
-				if (_playing)
-					[_delegate metronomeTicking: self bar: (callbackBeat / 4) + 1 beat: (callbackBeat % 4) + 1];
+                if (self->_playing)
+                    [self->_delegate metronomeTicking: self bar: (callbackBeat / 4) + 1 beat: (callbackBeat % 4) + 1];
 			});
 		}
         
