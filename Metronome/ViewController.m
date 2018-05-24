@@ -39,7 +39,7 @@
     self.stepper.minimumValue = 40;
     self.stepper.maximumValue = 200;
     self.stepper.value = tempo;
-    self.tempoLabel.text = [NSString stringWithFormat:@"%d", (int)tempo];
+    self.tempoLabel.text = [NSString stringWithFormat:@"%d BPM", (int)tempo];
 }
 
 
@@ -60,7 +60,7 @@
 - (IBAction)stepperValueChanged:(UIStepper *)sender {
     tempo = self.stepper.value;
     [metronome setTempo:tempo];
-    self.tempoLabel.text = [NSString stringWithFormat:@"%d", (int)tempo];
+    self.tempoLabel.text = [NSString stringWithFormat:@"%d BPM", (int)tempo];
 }
 
 #pragma MetronomeDelegate methods
