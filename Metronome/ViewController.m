@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     moveLeftToRight = YES;
-    tempo = 120;
+    tempo = 20;
     NSURL *highUrl = [[NSBundle mainBundle] URLForResource:@"High" withExtension:@"wav"];
     metronome = [[MetronomeNew alloc] init:highUrl];
     metronome.delegate = self;
@@ -65,13 +65,16 @@
 
 #pragma MetronomeDelegate methods
 - (void)metronomeTicking:(MetronomeNew *)metronome bar:(SInt32)bar beat:(SInt32)beat {
-    NSLog(@"%d   %d", bar, beat);
+    
+}
+
+- (void)metronomeTicking {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [self animateView:beat];
+        [self animateView];
     });
 }
 
-- (void)animateView:(int)beat {
+- (void)animateView {
     if (moveLeftToRight) {
         CGRect rightBound = self.sliderView.frame;
         rightBound.origin.x = self.barView.frame.size.width - self.sliderView.frame.size.width;

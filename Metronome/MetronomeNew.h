@@ -25,4 +25,5 @@
 @protocol MetronomeDelegate <NSObject>
 @optional 
 - (void)metronomeTicking:(MetronomeNew * _Nonnull)metronome bar:(SInt32)bar beat:(SInt32)beat;
+- (void)metronomeTicking;
 @end

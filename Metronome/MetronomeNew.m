@@ -164,9 +164,11 @@ static const float kTempoChangeResponsivenessSeconds = 0.250f;
 			uint64_t latencyHostTicks = [AVAudioTime hostTimeForSeconds: output.presentationLatency];
 			dispatch_after(dispatch_time(nodeBeatTime.hostTime + latencyHostTicks, 0), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
 				// hardcoded to 4/4 meter
-                if (self->_playing)
+                if (self->_playing) {
                     [self->_delegate metronomeTicking: self bar: (callbackBeat / 4) + 1 beat: (callbackBeat % 4) + 1];
-			});
+                    [self->_delegate metronomeTicking];
+                }
+			});            
 		}
         
 		_nextBeatSampleTime += samplesPerBeat;
