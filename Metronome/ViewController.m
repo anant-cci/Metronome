@@ -29,19 +29,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    
-    leftToRight = YES;
+    moveLeftToRight = YES;
+    tempo = 120;
     NSURL *highUrl = [[NSBundle mainBundle] URLForResource:@"High" withExtension:@"wav"];
-    NSURL *lowUrl = [[NSBundle mainBundle] URLForResource:@"Low" withExtension:@"wav"];
     metronome = [[MetronomeNew alloc] init:highUrl];
     metronome.delegate = self;
     
-    tempo = 120;
     self.stepper.stepValue = 1;
     self.stepper.minimumValue = 40;
     self.stepper.maximumValue = 200;
     self.stepper.value = tempo;
-    
     self.tempoLabel.text = [NSString stringWithFormat:@"%d", (int)tempo];
 }
 
