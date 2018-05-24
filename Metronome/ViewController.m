@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     moveLeftToRight = YES;
-    tempo = 20;
+    tempo = 80;
     NSURL *highUrl = [[NSBundle mainBundle] URLForResource:@"High" withExtension:@"wav"];
     metronome = [[MetronomeNew alloc] init:highUrl];
     metronome.delegate = self;
@@ -78,13 +78,13 @@
     if (moveLeftToRight) {
         CGRect rightBound = self.sliderView.frame;
         rightBound.origin.x = self.barView.frame.size.width - self.sliderView.frame.size.width;
-        [UIView animateWithDuration:60.0/tempo delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:60.0/(tempo + 1) delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.sliderView.frame = rightBound;
         } completion:nil];
     } else {
         CGRect leftBound = self.sliderView.frame;
         leftBound.origin.x = 0.0;
-        [UIView animateWithDuration:60.0/tempo delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+        [UIView animateWithDuration:60.0/(tempo + 1) delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
             self.sliderView.frame = leftBound;
         } completion:nil];
     }
