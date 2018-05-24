@@ -13,16 +13,16 @@
 
 @property (weak, nonatomic) IBOutlet UIStepper *stepper;
 @property (weak, nonatomic) IBOutlet UILabel *tempoLabel;
-@property (weak, nonatomic) IBOutlet UIButton *button1;
-@property (weak, nonatomic) IBOutlet UIButton *button2;
-@property (weak, nonatomic) IBOutlet UIButton *button3;
-@property (weak, nonatomic) IBOutlet UIButton *button4;
+
+@property (weak, nonatomic) IBOutlet UIView *sliderView;
+@property (weak, nonatomic) IBOutlet UIView *barView;
 
 @end
 
 @implementation ViewController {
     double tempo;
     MetronomeNew *metronome;
+    BOOL moveLeftToRight;
 }
 
 - (void)viewDidLoad {
@@ -30,7 +30,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    
+    leftToRight = YES;
     NSURL *highUrl = [[NSBundle mainBundle] URLForResource:@"High" withExtension:@"wav"];
     NSURL *lowUrl = [[NSBundle mainBundle] URLForResource:@"Low" withExtension:@"wav"];
     metronome = [[MetronomeNew alloc] init:highUrl];
@@ -75,20 +75,21 @@
 }
 
 - (void)animateView:(int)beat {
-    UIButton *button;
-    if (beat == 1) {
-        button = self.button1;
-    } else if (beat == 2) {
-        button = self.button2;
-    } else if (beat == 3) {
-        button = self.button3;
+    if (moveLeftToRight) {
+        CGRect rightBound = self.sliderView.frame;
+        rightBound.origin.x = self.barView.frame.size.width - self.sliderView.frame.size.width;
+        [UIView animateWithDuration:60.0/tempo delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.sliderView.frame = rightBound;
+        } completion:nil];
     } else {
-        button = self.button4;
+        CGRect leftBound = self.sliderView.frame;
+        leftBound.origin.x = 0.0;
+        [UIView animateWithDuration:60.0/tempo delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
+            self.sliderView.frame = leftBound;
+        } completion:nil];
     }
-    button.backgroundColor = [UIColor greenColor];
-    [UIView animateWithDuration:0.2 delay:0.0 options:UIViewAnimationOptionTransitionNone animations:^{
-        button.backgroundColor = [UIColor lightGrayColor];
-    } completion:nil];
+    
+    moveLeftToRight = !moveLeftToRight;
 }
 
 @end
