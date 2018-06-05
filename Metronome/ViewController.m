@@ -13,23 +13,21 @@
 
 @property (weak, nonatomic) IBOutlet UIStepper *stepper;
 @property (weak, nonatomic) IBOutlet UILabel *tempoLabel;
-
 @property (weak, nonatomic) IBOutlet UIView *sliderView;
 @property (weak, nonatomic) IBOutlet UIView *barView;
+@property (weak, nonatomic) IBOutlet UIView *pendulumView;
 
 @end
 
 @implementation ViewController {
     double tempo;
     MetronomeNew *metronome;
-    BOOL moveLeftToRight;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    moveLeftToRight = YES;
     tempo = 80;
     NSURL *highUrl = [[NSBundle mainBundle] URLForResource:@"High" withExtension:@"wav"];
     metronome = [[MetronomeNew alloc] init:highUrl];
@@ -51,10 +49,12 @@
 - (IBAction)startPlayback:(UIButton *)sender {
     [metronome setTempo:tempo];
     [metronome start];
+    [self startMetronomeAnimation];
 }
 
 - (IBAction)stopPlayback:(UIButton *)sender {
     [metronome stop];
+    [self stopMetronomeAnimation];
 }
 
 - (IBAction)stepperValueChanged:(UIStepper *)sender {
@@ -69,27 +69,36 @@
 }
 
 - (void)metronomeTicking {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self animateView];
-    });
+    
 }
 
-- (void)animateView {
-    if (moveLeftToRight) {
+#pragma Metronome methods
+- (void)startMetronomeAnimation {
+    [UIView animateKeyframesWithDuration:60.0/tempo delay:0.0 options:UIViewKeyframeAnimationOptionRepeat | UIViewKeyframeAnimationOptionAutoreverse | UIViewAnimationOptionTransitionNone animations:^{
+        self.sliderView.frame = [self getEdgeBound];
+        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.5 animations:^{
+            self.sliderView.alpha = 0.2;
+        }];
+        [UIView addKeyframeWithRelativeStartTime:0.5 relativeDuration:0.5 animations:^{
+            self.sliderView.alpha = 1.0;
+        }];
+    } completion:nil];
+}
+
+- (void)stopMetronomeAnimation {
+    [self.sliderView.layer removeAllAnimations];
+}
+
+- (CGRect)getEdgeBound {
+    if (self.sliderView.frame.origin.x == 0.0) {
         CGRect rightBound = self.sliderView.frame;
         rightBound.origin.x = self.barView.frame.size.width - self.sliderView.frame.size.width;
-        [UIView animateWithDuration:60.0/(tempo + 1) delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            self.sliderView.frame = rightBound;
-        } completion:nil];
+        return rightBound;
     } else {
         CGRect leftBound = self.sliderView.frame;
         leftBound.origin.x = 0.0;
-        [UIView animateWithDuration:60.0/(tempo + 1) delay:0.0 options:UIViewAnimationOptionCurveEaseIn animations:^{
-            self.sliderView.frame = leftBound;
-        } completion:nil];
+        return leftBound;
     }
-    
-    moveLeftToRight = !moveLeftToRight;
 }
 
 @end
